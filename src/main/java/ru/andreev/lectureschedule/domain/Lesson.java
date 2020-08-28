@@ -1,23 +1,43 @@
 package ru.andreev.lectureschedule.domain;
 
+import org.hibernate.annotations.Type;
 import ru.andreev.lectureschedule.enums.TypeOfLesson;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.DayOfWeek;
+import java.util.Arrays;
+import java.util.Objects;
 
+
+@Entity
+@Table(name = "lesson")
 public class Lesson extends AbstractEntity {
 
+    @Type(type = "int-array")
+    @Column(
+        name = "numOfWeek",
+            columnDefinition = "int[]"
+    )
     private int[] numOfWeek;
 
+    @Column
     private DayOfWeek dayOfWeek;
 
+    @Column
     private int numOfLesson;
 
+    @Column
     private String name;
 
+    @Column
     private String teacher;
 
+    @Column
     private TypeOfLesson type;
 
+    @Column
     private String audience;
 
     public int[] getNumOfWeek() {
@@ -28,16 +48,12 @@ public class Lesson extends AbstractEntity {
         this.numOfWeek = numOfWeek;
     }
 
-    public void setNumOfWeek(String numOfWeek){
-        //todo
-    }
-
     public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
     }
 
-    public void setDayOfWeek(Integer dayOfWeek) {
-        this.dayOfWeek = DayOfWeek.of(dayOfWeek);
+    public void setDayOfWeek(DayOfWeek dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
 
     public int getNumOfLesson() {
@@ -68,16 +84,6 @@ public class Lesson extends AbstractEntity {
         return type;
     }
 
-    public void setType(String type){
-        if(type.equals("(Лабораторная работа)")){
-            this.type = TypeOfLesson.LABORATORY_WORK;
-        }else if(type.equals("(Практические занятия)")){
-            this.type = TypeOfLesson.PRACTICAL_LESSON;
-        } else {
-            this.type = TypeOfLesson.LECTURE;
-        }
-    }
-
     public void setType(TypeOfLesson type) {
         this.type = type;
     }
@@ -88,5 +94,26 @@ public class Lesson extends AbstractEntity {
 
     public void setAudience(String audience) {
         this.audience = audience;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lesson lesson = (Lesson) o;
+        return numOfLesson == lesson.numOfLesson &&
+                Arrays.equals(numOfWeek, lesson.numOfWeek) &&
+                dayOfWeek == lesson.dayOfWeek &&
+                Objects.equals(name, lesson.name) &&
+                Objects.equals(teacher, lesson.teacher) &&
+                type == lesson.type &&
+                Objects.equals(audience, lesson.audience);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(dayOfWeek, numOfLesson, name, teacher, type, audience);
+        result = 31 * result + Arrays.hashCode(numOfWeek);
+        return result;
     }
 }
