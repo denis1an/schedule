@@ -5,18 +5,22 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Service;
 import ru.andreev.lectureschedule.domain.Lesson;
 import ru.andreev.lectureschedule.enums.TypeOfLesson;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ParseService {
 
-    public List<Lesson> readSchedule(String url){
-        Document document = getDocument(url);
+    @Deprecated
+    public List<Lesson> readSchedule(){
+        Document document = getDocument();
         Elements elements = document.getElementsByClass("pair");
         List<Lesson> lessons  = new ArrayList<>();
         for (Element element : elements){
@@ -37,19 +41,8 @@ public class ParseService {
             } else {
                 lesson.setType(TypeOfLesson.LECTURE);
             }
-
-            String weeks = element.getElementsByClass("weeks").text();
-            int[] numOfWeek = new int[20];
-            int j = 0;
-            for (int i = 1; i < weeks.length() - 1; i++) {
-                int index = weeks.indexOf(',', i);
-                if(index == -1){
-                    index = weeks.indexOf('н',i);
-                }
-                numOfWeek[j++] = Integer.parseInt(weeks.substring(i,index));
-                i = index + 1;
-            }
-            lesson.setNumOfWeek(numOfWeek);
+            String numOfWeek = element.getElementsByClass("weeks").text();
+            lesson.setNumOfWeek(numOfWeek.substring(1,numOfWeek.length() - 2));
 
             lessons.add(lesson);
         }
@@ -57,10 +50,11 @@ public class ParseService {
         return lessons;
     }
     
-    private Document getDocument(String url){
+    private Document getDocument(){
         Document document = null;
+        File file = new File("/Users/denisandreev/IdeaProjects/lecture-schedule/src/main/resources/tmp/index.html");
         try {
-            document = Jsoup.connect(url).get();
+            document = Jsoup.parse(file,"UTF-8");
         } catch (IOException e) {
             e.printStackTrace();
         }
