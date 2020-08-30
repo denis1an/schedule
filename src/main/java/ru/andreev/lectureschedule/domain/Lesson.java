@@ -1,26 +1,18 @@
 package ru.andreev.lectureschedule.domain;
 
-import org.hibernate.annotations.Type;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import ru.andreev.lectureschedule.enums.TypeOfLesson;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.DayOfWeek;
-import java.util.Arrays;
 import java.util.Objects;
 
 
 @Entity
-@Table(name = "lesson")
+@Table(name = "lessons")
 public class Lesson extends AbstractEntity {
 
-    @Type(type = "int-array")
-    @Column(
-        name = "numOfWeek",
-            columnDefinition = "int[]"
-    )
-    private int[] numOfWeek;
+    private String numOfWeek;
 
     @Column
     private DayOfWeek dayOfWeek;
@@ -40,11 +32,15 @@ public class Lesson extends AbstractEntity {
     @Column
     private String audience;
 
-    public int[] getNumOfWeek() {
+    @ManyToOne(fetch= FetchType.LAZY, cascade= CascadeType.ALL)
+    @JsonBackReference
+    private Group group;
+
+    public String getNumOfWeek() {
         return numOfWeek;
     }
 
-    public void setNumOfWeek(int[] numOfWeek) {
+    public void setNumOfWeek(String numOfWeek) {
         this.numOfWeek = numOfWeek;
     }
 
@@ -96,13 +92,21 @@ public class Lesson extends AbstractEntity {
         this.audience = audience;
     }
 
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Lesson lesson = (Lesson) o;
         return numOfLesson == lesson.numOfLesson &&
-                Arrays.equals(numOfWeek, lesson.numOfWeek) &&
+                Objects.equals(numOfWeek, lesson.numOfWeek) &&
                 dayOfWeek == lesson.dayOfWeek &&
                 Objects.equals(name, lesson.name) &&
                 Objects.equals(teacher, lesson.teacher) &&
@@ -112,8 +116,6 @@ public class Lesson extends AbstractEntity {
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(dayOfWeek, numOfLesson, name, teacher, type, audience);
-        result = 31 * result + Arrays.hashCode(numOfWeek);
-        return result;
+        return Objects.hash(numOfWeek, dayOfWeek, numOfLesson, name, teacher, type, audience);
     }
 }
