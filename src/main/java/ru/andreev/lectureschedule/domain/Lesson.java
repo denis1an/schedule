@@ -5,6 +5,7 @@ import ru.andreev.lectureschedule.enums.TypeOfLesson;
 
 import javax.persistence.*;
 import java.time.DayOfWeek;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -12,7 +13,9 @@ import java.util.Objects;
 @Table(name = "lessons")
 public class Lesson extends AbstractEntity {
 
-    private String numOfWeek;
+    @Column
+    @ElementCollection
+    private List<Integer> numOfWeek;
 
     @Column
     private DayOfWeek dayOfWeek;
@@ -36,11 +39,11 @@ public class Lesson extends AbstractEntity {
     @JsonBackReference
     private Group group;
 
-    public String getNumOfWeek() {
+    public List<Integer> getNumOfWeek() {
         return numOfWeek;
     }
 
-    public void setNumOfWeek(String numOfWeek) {
+    public void setNumOfWeek(List<Integer> numOfWeek) {
         this.numOfWeek = numOfWeek;
     }
 

@@ -41,9 +41,18 @@ public class ParseService {
             } else {
                 lesson.setType(TypeOfLesson.LECTURE);
             }
-            String numOfWeek = element.getElementsByClass("weeks").text();
-            lesson.setNumOfWeek(numOfWeek.substring(1,numOfWeek.length() - 2));
+            String weeks = element.getElementsByClass("weeks").text();
 
+            List<Integer> numOfWeek = new ArrayList<>();
+            for (int i = 1; i < weeks.length() - 1 ; i++) {
+                int index = weeks.indexOf(',',i);
+                if(index == -1){
+                    index = weeks.indexOf('н', i);
+                }
+                numOfWeek.add(Integer.parseInt(weeks.substring(i,index)));
+                i = index + 1;
+            }
+            lesson.setNumOfWeek(numOfWeek);
             lessons.add(lesson);
         }
 

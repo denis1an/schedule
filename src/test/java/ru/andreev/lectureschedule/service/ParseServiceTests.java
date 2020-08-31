@@ -24,7 +24,7 @@ public class ParseServiceTests{
         assertEquals(TypeOfLesson.LABORATORY_WORK, lesson.getType());
         assertEquals("Мусаева Т.В.", lesson.getTeacher());
         assertEquals("ауд.: 202; Б22/2", lesson.getAudience());
-        assertEquals("(5, 7, 9, 11, 13, 15, 17н)", lesson.getNumOfWeek());
+        assertEquals(7, lesson.getNumOfWeek().size());
     }
 
 }
