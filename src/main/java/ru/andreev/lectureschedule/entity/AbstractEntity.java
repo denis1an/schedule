@@ -1,4 +1,4 @@
-package ru.andreev.lectureschedule.domain;
+package ru.andreev.lectureschedule.entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

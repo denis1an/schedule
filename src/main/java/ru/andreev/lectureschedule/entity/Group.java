@@ -1,6 +1,7 @@
-package ru.andreev.lectureschedule.domain;
+package ru.andreev.lectureschedule.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import ru.andreev.lectureschedule.enums.Course;
 import ru.andreev.lectureschedule.enums.Department;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ public class Group extends AbstractEntity {
     private Department department;
 
     @Column
-    private int numOfCourse;
+    private Course course;
 
     @Column
     private String numOfGroup;
@@ -31,12 +32,12 @@ public class Group extends AbstractEntity {
         this.department = department;
     }
 
-    public int getNumOfCourse() {
-        return numOfCourse;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setNumOfCourse(int numOfCourse) {
-        this.numOfCourse = numOfCourse;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public String getNumOfGroup() {

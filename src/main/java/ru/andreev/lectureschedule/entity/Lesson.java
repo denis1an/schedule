@@ -1,4 +1,4 @@
-package ru.andreev.lectureschedule.domain;
+package ru.andreev.lectureschedule.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import ru.andreev.lectureschedule.enums.TypeOfLesson;
