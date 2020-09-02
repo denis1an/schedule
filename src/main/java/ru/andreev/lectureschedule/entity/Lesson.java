@@ -14,16 +14,6 @@ import java.util.Objects;
 public class Lesson extends AbstractEntity {
 
     @Column
-    @ElementCollection
-    private List<Integer> numOfWeek;
-
-    @Column
-    private DayOfWeek dayOfWeek;
-
-    @Column
-    private int numOfLesson;
-
-    @Column
     private String name;
 
     @Column
@@ -35,9 +25,19 @@ public class Lesson extends AbstractEntity {
     @Column
     private String audience;
 
+    @Column
+    private DayOfWeek dayOfWeek;
+
+    @Column
+    private int numOfLesson;
+
     @ManyToOne(fetch= FetchType.LAZY, cascade= CascadeType.ALL)
     @JsonBackReference
     private Group group;
+
+    @Column
+    @ElementCollection
+    private List<Integer> numOfWeek;
 
     public List<Integer> getNumOfWeek() {
         return numOfWeek;

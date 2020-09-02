@@ -1,15 +1,16 @@
 package ru.andreev.lectureschedule.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.andreev.lectureschedule.domain.Lesson;
+import ru.andreev.lectureschedule.entity.Group;
+import ru.andreev.lectureschedule.entity.Lesson;
 
 import java.time.DayOfWeek;
 import java.util.List;
 
 public interface LessonRepository extends JpaRepository<Lesson,Long> {
 
-    List<Lesson> findAllByNumOfWeekContains(Integer numOfWeek);
+    List<Lesson> findAllByNumOfWeekContainsAndGroup(Integer numOfWeek, Group currentGroup);
 
-    List<Lesson> findAllByNumOfWeekContainsAndDayOfWeek(Integer numOfWeek, DayOfWeek day);
+    List<Lesson> findAllByNumOfWeekContainsAndDayOfWeekAndGroup(Integer numOfWeek, DayOfWeek day, Group currentGroup);
 
 }

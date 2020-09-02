@@ -12,13 +12,13 @@ import java.util.List;
 public class Group extends AbstractEntity {
 
     @Column
+    private String numOfGroup;
+
+    @Column
     private Department department;
 
     @Column
     private Course course;
-
-    @Column
-    private String numOfGroup;
 
     @OneToMany(mappedBy = "group", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonManagedReference
