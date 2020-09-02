@@ -1,7 +1,7 @@
 package ru.andreev.lectureschedule.service;
 
 import org.junit.jupiter.api.Test;
-import ru.andreev.lectureschedule.domain.Lesson;
+import ru.andreev.lectureschedule.entity.Lesson;
 import ru.andreev.lectureschedule.enums.TypeOfLesson;
 
 import java.time.DayOfWeek;
