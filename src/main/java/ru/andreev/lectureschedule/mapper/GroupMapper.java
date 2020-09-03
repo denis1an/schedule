@@ -10,6 +10,13 @@ public class GroupMapper {
         groupDTO.setNumOfGroup(group.getNumOfGroup());
         groupDTO.setDepartment(group.getDepartment());
         groupDTO.setCourse(group.getCourse());
+
+        if(group.getLessons() == null){
+            groupDTO.setScheduleExist(Boolean.FALSE);
+        } else {
+            groupDTO.setScheduleExist(Boolean.TRUE);
+        }
+
         return groupDTO;
     }
 }

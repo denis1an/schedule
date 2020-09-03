@@ -7,6 +7,7 @@ public class GroupDTO {
     private String numOfGroup;
     private Department department;
     private Course course;
+    private Boolean isScheduleExist;
 
     public String getNumOfGroup() {
         return numOfGroup;
@@ -30,5 +31,13 @@ public class GroupDTO {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public Boolean getScheduleExist() {
+        return isScheduleExist;
+    }
+
+    public void setScheduleExist(Boolean scheduleExist) {
+        isScheduleExist = scheduleExist;
     }
 }
