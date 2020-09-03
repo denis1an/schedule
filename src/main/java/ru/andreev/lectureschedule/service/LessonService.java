@@ -29,12 +29,12 @@ public class LessonService {
         return LessonMapper.toDto(lessonRepository.findAll());
     }
 
-    public void save(Lesson lesson){
-        lessonRepository.save(lesson);
+    public Lesson save(Lesson lesson){
+        return lessonRepository.save(lesson);
     }
 
-    public void update(Lesson lesson){
-        lessonRepository.save(lesson);
+    public Lesson update(Lesson lesson){
+        return lessonRepository.save(lesson);
     }
 
     public void delete(Lesson lesson){
@@ -42,10 +42,14 @@ public class LessonService {
     }
 
     public List<LessonDTO> findByWeek(Integer numOfWeek, Group currentGroup){
-        return LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndGroup(numOfWeek,currentGroup));
+        return LessonMapper.toDto(
+                lessonRepository.findAllByNumOfWeekContainsAndGroup(numOfWeek,currentGroup)
+        );
     }
 
     public List<LessonDTO> findByDay(Integer numOfWeek, DayOfWeek dayOfWeek, Group currentGroup){
-        return LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndDayOfWeekAndGroup(numOfWeek,dayOfWeek,currentGroup));
+        return LessonMapper.toDto(
+                lessonRepository.findAllByNumOfWeekContainsAndDayOfWeekAndGroup(numOfWeek,dayOfWeek,currentGroup)
+        );
     }
 }
