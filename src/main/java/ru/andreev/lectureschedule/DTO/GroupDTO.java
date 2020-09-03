@@ -1,11 +1,11 @@
 package ru.andreev.lectureschedule.DTO;
 
 import ru.andreev.lectureschedule.enums.Course;
-import ru.andreev.lectureschedule.enums.Faculty;
+import ru.andreev.lectureschedule.enums.Department;
 
 public class GroupDTO {
     private String numOfGroup;
-    private Faculty faculty;
+    private Department department;
     private Course course;
 
     public String getNumOfGroup() {
@@ -16,12 +16,12 @@ public class GroupDTO {
         this.numOfGroup = numOfGroup;
     }
 
-    public Faculty getFaculty() {
-        return faculty;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public Course getCourse() {

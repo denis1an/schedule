@@ -2,7 +2,7 @@ package ru.andreev.lectureschedule.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import ru.andreev.lectureschedule.enums.Course;
-import ru.andreev.lectureschedule.enums.Faculty;
+import ru.andreev.lectureschedule.enums.Department;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,7 +15,7 @@ public class Group extends AbstractEntity {
     private String numOfGroup;
 
     @Column
-    private Faculty faculty;
+    private Department department;
 
     @Column
     private Course course;
@@ -24,12 +24,12 @@ public class Group extends AbstractEntity {
     @JsonManagedReference
     private List<Lesson> lessons;
 
-    public Faculty getFaculty() {
-        return faculty;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public Course getCourse() {
