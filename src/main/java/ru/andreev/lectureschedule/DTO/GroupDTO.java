@@ -3,10 +3,19 @@ package ru.andreev.lectureschedule.DTO;
 import ru.andreev.lectureschedule.enums.Course;
 import ru.andreev.lectureschedule.enums.Faculty;
 
+import javax.validation.constraints.NotBlank;
+
 public class GroupDTO {
+
+    @NotBlank
     private String numOfGroup;
+
+    @NotBlank
     private Faculty faculty;
+
+    @NotBlank
     private Course course;
+
     private Boolean isScheduleExist;
 
     public String getNumOfGroup() {

@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface LessonRepository extends JpaRepository<Lesson,Long> {
 
-    List<Lesson> findAllByNumOfWeekContainsAndGroup(Integer numOfWeek, Group currentGroup);
+    List<Lesson> findAllByNumOfWeekContainsAndGroupId(Integer numOfWeek, Long groupId);
 
-    List<Lesson> findAllByNumOfWeekContainsAndDayOfWeekAndGroup(Integer numOfWeek, DayOfWeek day, Group currentGroup);
+    List<Lesson> findAllByNumOfWeekContainsAndDayOfWeekAndGroupId(Integer numOfWeek, DayOfWeek day, Long groupId);
 
 }

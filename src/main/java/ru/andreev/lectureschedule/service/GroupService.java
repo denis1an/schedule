@@ -29,12 +29,9 @@ public class GroupService {
         return GroupMapper.toDto(groupRepository.findAll());
     }
 
-    public Optional<GroupDTO> findByFacultyAndNum(Faculty faculty, String numOfGroup){
-        Optional<Group> optionalGroup = groupRepository
-                .findByFacultyAndNumOfGroup(faculty,numOfGroup);
-        return optionalGroup.map(GroupMapper::toDto);
+    public Optional<Group> findByFacultyAndNum(Faculty faculty, String numOfGroup){
+        return groupRepository.findByFacultyAndNumOfGroup(faculty,numOfGroup);
     }
-
     public List<GroupDTO> findAllByCourseAndFaculty(Course course, Faculty faculty){
         return GroupMapper.toDto(groupRepository.findAllByCourseAndFaculty(course, faculty));
     }

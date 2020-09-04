@@ -41,11 +41,11 @@ public class LessonService {
         lessonRepository.delete(lesson);
     }
 
-    public List<LessonDTO> findByWeek(Integer numOfWeek, Group currentGroup){
-        return LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndGroup(numOfWeek,currentGroup));
+    public List<LessonDTO> findForWeek(Integer numOfWeek, Long groupId){
+        return LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndGroupId(numOfWeek,groupId));
     }
 
-    public List<LessonDTO> findByDay(Integer numOfWeek, DayOfWeek dayOfWeek, Group currentGroup){
-        return LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndDayOfWeekAndGroup(numOfWeek,dayOfWeek,currentGroup));
+    public List<LessonDTO> findForDay(Integer numOfWeek, DayOfWeek dayOfWeek, Long groupId){
+        return LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndDayOfWeekAndGroupId(numOfWeek,dayOfWeek,groupId));
     }
 }
