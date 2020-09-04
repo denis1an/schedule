@@ -25,16 +25,10 @@ public class ScheduleController {
 
     private final LessonService lessonService;
 
-    private final LessonRepository lessonRepository;
-
-    private final GroupRepository groupRepository;
-
     private final GroupService groupService;
 
-    public ScheduleController(LessonService lessonService, LessonRepository lessonRepository, GroupRepository groupRepository, GroupService groupService) {
+    public ScheduleController(LessonService lessonService, GroupService groupService) {
         this.lessonService = lessonService;
-        this.lessonRepository = lessonRepository;
-        this.groupRepository = groupRepository;
         this.groupService = groupService;
     }
 
