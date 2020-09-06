@@ -2,7 +2,6 @@ package ru.andreev.lectureschedule.service;
 
 import org.springframework.stereotype.Service;
 import ru.andreev.lectureschedule.DTO.LessonDTO;
-import ru.andreev.lectureschedule.entity.Group;
 import ru.andreev.lectureschedule.entity.Lesson;
 import ru.andreev.lectureschedule.mapper.LessonMapper;
 import ru.andreev.lectureschedule.repository.LessonRepository;

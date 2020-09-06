@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.andreev.lectureschedule.DTO.GroupDTO;
 import ru.andreev.lectureschedule.entity.Group;
 import ru.andreev.lectureschedule.enums.Course;
-import ru.andreev.lectureschedule.enums.Faculty;
+import ru.andreev.lectureschedule.enums.EFaculty;
 import ru.andreev.lectureschedule.mapper.GroupMapper;
 import ru.andreev.lectureschedule.repository.GroupRepository;
 
@@ -29,15 +29,15 @@ public class GroupService {
         return GroupMapper.toDto(groupRepository.findAll());
     }
 
-    public Optional<Group> findByFacultyAndNum(Faculty faculty, String numOfGroup){
-        return groupRepository.findByFacultyAndNumOfGroup(faculty,numOfGroup);
+    public Optional<Group> findByFacultyAndNum(EFaculty EFaculty, String numOfGroup){
+        return groupRepository.findByEFacultyAndNumOfGroup(EFaculty,numOfGroup);
     }
-    public List<GroupDTO> findAllByCourseAndFaculty(Course course, Faculty faculty){
-        return GroupMapper.toDto(groupRepository.findAllByCourseAndFaculty(course, faculty));
+    public List<GroupDTO> findAllByCourseAndFaculty(Course course, EFaculty EFaculty){
+        return GroupMapper.toDto(groupRepository.findAllByCourseAndEFaculty(course, EFaculty));
     }
 
-    public List<GroupDTO> findAllByFaculty(Faculty faculty){
-        return  GroupMapper.toDto(groupRepository.findAllByFaculty(faculty));
+    public List<GroupDTO> findAllByFaculty(EFaculty EFaculty){
+        return  GroupMapper.toDto(groupRepository.findAllByEFaculty(EFaculty));
     }
 
     public Group save(Group group){

@@ -1,7 +1,7 @@
 package ru.andreev.lectureschedule.DTO;
 
 import ru.andreev.lectureschedule.enums.Course;
-import ru.andreev.lectureschedule.enums.Faculty;
+import ru.andreev.lectureschedule.enums.EFaculty;
 
 import javax.validation.constraints.NotBlank;
 
@@ -11,7 +11,7 @@ public class GroupDTO {
     private String numOfGroup;
 
     @NotBlank
-    private Faculty faculty;
+    private EFaculty EFaculty;
 
     @NotBlank
     private Course course;
@@ -26,12 +26,12 @@ public class GroupDTO {
         this.numOfGroup = numOfGroup;
     }
 
-    public Faculty getFaculty() {
-        return faculty;
+    public EFaculty getEFaculty() {
+        return EFaculty;
     }
 
-    public void setFaculty(Faculty faculty) {
-        this.faculty = faculty;
+    public void setEFaculty(EFaculty EFaculty) {
+        this.EFaculty = EFaculty;
     }
 
     public Course getCourse() {

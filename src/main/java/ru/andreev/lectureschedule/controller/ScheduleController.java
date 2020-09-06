@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.andreev.lectureschedule.DTO.LessonDTO;
 import ru.andreev.lectureschedule.entity.Group;
 import ru.andreev.lectureschedule.payload.request.ScheduleRequest;
-import ru.andreev.lectureschedule.repository.GroupRepository;
-import ru.andreev.lectureschedule.repository.LessonRepository;
 import ru.andreev.lectureschedule.service.GroupService;
 import ru.andreev.lectureschedule.service.LessonService;
 
@@ -35,7 +33,7 @@ public class ScheduleController {
     @GetMapping("/week")
     public List<LessonDTO> getScheduleForTheWeek(@RequestBody @Valid ScheduleRequest request){
         Optional<Group> optionalGroup = groupService.findByFacultyAndNum(
-                request.getGroupDTO().getFaculty(),request.getGroupDTO().getNumOfGroup());
+                request.getGroupDTO().getEFaculty(),request.getGroupDTO().getNumOfGroup());
         List<LessonDTO> schedule = null;
         if(optionalGroup.isPresent()){
                schedule = lessonService.findForWeek(
@@ -48,7 +46,7 @@ public class ScheduleController {
     @GetMapping("/day")
     public List<LessonDTO> getScheduleForTheDay(@RequestBody @Valid ScheduleRequest request) {
         Optional<Group> optionalGroup = groupService.findByFacultyAndNum(
-                request.getGroupDTO().getFaculty(),request.getGroupDTO().getNumOfGroup());
+                request.getGroupDTO().getEFaculty(),request.getGroupDTO().getNumOfGroup());
         List<LessonDTO> schedule = null;
         if(optionalGroup.isPresent()){
             schedule = lessonService.findForDay(

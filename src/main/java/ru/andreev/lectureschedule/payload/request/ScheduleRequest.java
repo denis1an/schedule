@@ -3,7 +3,6 @@ package ru.andreev.lectureschedule.payload.request;
 import ru.andreev.lectureschedule.DTO.GroupDTO;
 
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDate;
 import java.util.Date;
 
 public class ScheduleRequest {

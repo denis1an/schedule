@@ -1,7 +1,6 @@
 package ru.andreev.lectureschedule.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.andreev.lectureschedule.entity.Group;
 import ru.andreev.lectureschedule.entity.Lesson;
 
 import java.time.DayOfWeek;
