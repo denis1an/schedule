@@ -32,6 +32,10 @@ public class LessonService {
         lessonRepository.save(lesson);
     }
 
+    public void saveAll(List<Lesson> lessons){
+        lessonRepository.saveAll(lessons);
+    }
+
     public void update(Lesson lesson){
         lessonRepository.save(lesson);
     }
