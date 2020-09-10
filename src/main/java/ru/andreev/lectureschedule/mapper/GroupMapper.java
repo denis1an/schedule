@@ -10,9 +10,16 @@ public class GroupMapper {
 
     public static GroupDTO toDto(Group group){
         GroupDTO groupDTO = new GroupDTO();
-        groupDTO.setNumOfGroup(group.getNumOfGroup());
+        groupDTO.setNumOfGroup(group.getName());
         groupDTO.setEFaculty(group.getEFaculty());
         groupDTO.setCourse(group.getCourse());
+
+        if(group.getLessons() != null){
+            groupDTO.setScheduleExist(Boolean.TRUE);
+        }else {
+            groupDTO.setScheduleExist(Boolean.FALSE);
+        }
+
         return groupDTO;
     }
 

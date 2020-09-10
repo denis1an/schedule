@@ -29,8 +29,8 @@ public class GroupService {
         return GroupMapper.toDto(groupRepository.findAll());
     }
 
-    public Optional<Group> findByFacultyAndNum(EFaculty EFaculty, String numOfGroup){
-        return groupRepository.findByEFacultyAndNumOfGroup(EFaculty,numOfGroup);
+    public Optional<Group> findByFacultyAndNum(EFaculty EFaculty, String name){
+        return groupRepository.findByEFacultyAndName(EFaculty,name);
     }
     public List<GroupDTO> findAllByCourseAndFaculty(Course course, EFaculty EFaculty){
         return GroupMapper.toDto(groupRepository.findAllByCourseAndEFaculty(course, EFaculty));

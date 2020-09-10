@@ -1,10 +1,25 @@
 package ru.andreev.lectureschedule.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.andreev.lectureschedule.DTO.GroupDTO;
+import ru.andreev.lectureschedule.entity.Faculty;
+import ru.andreev.lectureschedule.entity.Group;
+import ru.andreev.lectureschedule.entity.Lesson;
+import ru.andreev.lectureschedule.enums.Course;
+import ru.andreev.lectureschedule.enums.EFaculty;
+import ru.andreev.lectureschedule.mapper.GroupMapper;
+import ru.andreev.lectureschedule.payload.request.GroupRequest;
 import ru.andreev.lectureschedule.service.FacultyService;
+import ru.andreev.lectureschedule.service.GroupService;
 import ru.andreev.lectureschedule.service.LessonService;
 import ru.andreev.lectureschedule.service.ParseService;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -17,10 +32,40 @@ public class ParseController {
 
     private final FacultyService facultyService;
 
-    public ParseController(ParseService parseService, LessonService lessonService, FacultyService facultyService) {
+    private final GroupService groupService;
+
+    public ParseController(ParseService parseService, LessonService lessonService, FacultyService facultyService, GroupService groupService) {
         this.parseService = parseService;
         this.lessonService = lessonService;
         this.facultyService = facultyService;
+        this.groupService = groupService;
+    }
+
+    @GetMapping("/group")
+    public GroupDTO parseGroup(@RequestBody @Valid GroupRequest request){
+        Optional<Faculty> optionalFaculty = facultyService.
+                findByEFaculty(EFaculty.valueOf(request.getFaculty()));
+        Group group = null;
+        if(optionalFaculty.isPresent()){
+            Faculty faculty = optionalFaculty.get();
+
+            String codeFaculty = faculty.getNumber();
+            String codeGroup = faculty.getGroupsNum().get(request.getName());
+
+            group = new Group();
+            group.setName(request.getName());
+            group.setCourse(Course.valueOf(request.getCourse()));
+            group.setEFaculty(EFaculty.valueOf(request.getFaculty()));
+
+            List<Lesson> lessons = parseService.readSchedule(codeFaculty,codeGroup,group);
+            group.setLessons(lessons);
+
+            group = groupService.save(group);
+            lessonService.saveAll(lessons);
+        }else {
+            return new GroupDTO();
+        }
+        return GroupMapper.toDto(group); //todo responseEntity
     }
 
     /*
@@ -35,7 +80,7 @@ public class ParseController {
         return "test";
     }*/
 
-    /*@GetMapping
+    @GetMapping
     public String test(){
 
         Faculty faculty1 = parseService.readGroupsOfFaculty("ИСИТ,50005;54426,ИСТ-011;54427,ИСТ-012;54428,ИСТ-013;54671,ИСТ-014;" +
@@ -56,6 +101,6 @@ public class ParseController {
         facultyService.save(faculty2);
 
         return "test";
-    }*/
+    }
 
 }

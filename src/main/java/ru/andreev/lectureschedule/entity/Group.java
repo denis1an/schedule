@@ -12,7 +12,7 @@ import java.util.List;
 public class Group extends AbstractEntity {
 
     @Column
-    private String numOfGroup;
+    private String name;
 
     @Column
     private EFaculty EFaculty;
@@ -40,12 +40,12 @@ public class Group extends AbstractEntity {
         this.course = course;
     }
 
-    public String getNumOfGroup() {
-        return numOfGroup;
+    public String getName() {
+        return name;
     }
 
-    public void setNumOfGroup(String numOfGroup) {
-        this.numOfGroup = numOfGroup;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Lesson> getLessons() {

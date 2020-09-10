@@ -9,6 +9,7 @@ public class ScheduleRequest {
     @NotBlank
     private GroupDTO groupDTO;
 
+    @NotBlank
     private Date date;
 
     public GroupDTO getGroupDTO() {

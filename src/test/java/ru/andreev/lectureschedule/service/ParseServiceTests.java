@@ -19,7 +19,7 @@ public class ParseServiceTests{
     void it_should_return_parse_lessons () {
         ParseService parseService = new ParseService();
 
-        List<Lesson> lessons = parseService.readSchedule("50005","54214");
+        List<Lesson> lessons = parseService.readSchedule("50005","54214", null);
         Lesson lesson = lessons.get(0);
 
         assertEquals("Эргономика и дизайн графических интерфейсов", lesson.getName());

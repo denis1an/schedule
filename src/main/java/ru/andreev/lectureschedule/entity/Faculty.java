@@ -2,10 +2,7 @@ package ru.andreev.lectureschedule.entity;
 
 import ru.andreev.lectureschedule.enums.EFaculty;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Map;
 
 @Entity
@@ -14,10 +11,10 @@ public class Faculty extends AbstractEntity {
     @Column
     private EFaculty eFaculty;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.LAZY)
     private Map<String, String> groupsNum;
 
-    private int number;
+    private String number;
 
     public EFaculty getEFaculty() {
         return eFaculty;
@@ -35,11 +32,11 @@ public class Faculty extends AbstractEntity {
         this.groupsNum = groupsNum;
     }
 
-    public int getNumber() {
+    public String  getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 }

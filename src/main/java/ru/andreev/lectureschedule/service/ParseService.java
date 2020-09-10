@@ -7,6 +7,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 import ru.andreev.lectureschedule.entity.Faculty;
+import ru.andreev.lectureschedule.entity.Group;
 import ru.andreev.lectureschedule.entity.Lesson;
 import ru.andreev.lectureschedule.enums.EFaculty;
 import ru.andreev.lectureschedule.enums.TypeOfLesson;
@@ -25,7 +26,7 @@ public class ParseService {
         faculty.setEFaculty(stringToEnum(input.substring(0,input.indexOf(','))));
 
         int i = input.indexOf(";");
-        faculty.setNumber(Integer.parseInt(input.substring(input.indexOf(',') + 1, i )));
+        faculty.setNumber(input.substring(input.indexOf(',') + 1, i ));
 
         Map<String,String> groupNames = new HashMap<>();
         for(i = i + 1; i < input.length(); i++){
@@ -41,7 +42,7 @@ public class ParseService {
         return faculty;
     }
 
-    public List<Lesson> readSchedule(String codeFaculty, String codeGroup){
+    public List<Lesson> readSchedule(String codeFaculty, String codeGroup, Group group){
         Document document = getDocument(codeFaculty, codeGroup);
         Elements elements = document.getElementsByClass("pair");
         List<Lesson> lessons  = new ArrayList<>();
@@ -75,6 +76,7 @@ public class ParseService {
                 i = index + 1;
             }
             lesson.setNumOfWeek(numOfWeek);
+            lesson.setGroup(group);
             lessons.add(lesson);
         }
 

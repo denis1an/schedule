@@ -10,10 +10,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface GroupRepository extends JpaRepository<Group, Long> {
-    Optional<Group> findByEFacultyAndNumOfGroup(EFaculty faculty, String numOfGroup);
+    Optional<Group> findByEFacultyAndName(EFaculty faculty, String name);
 
     List<Group> findAllByCourseAndEFaculty(Course course, EFaculty EFaculty);
 
-    List<Group> findAllByEFaculty(EFaculty EFaculty);
+    List<Group> findAllByEFaculty(EFaculty eFaculty);
 
 }
