@@ -33,7 +33,7 @@ public class ScheduleController {
     @GetMapping("/week")
     public List<LessonDTO> getScheduleForTheWeek(@RequestBody @Valid ScheduleRequest request){
         Optional<Group> optionalGroup = groupService.findByFacultyAndNum(
-                request.getGroupDTO().getEFaculty(),request.getGroupDTO().getNumOfGroup());
+                request.getGroupDTO().getFaculty(),request.getGroupDTO().getNumOfGroup());
         List<LessonDTO> schedule = null;
         if(optionalGroup.isPresent()){
                schedule = lessonService.findForWeek(
@@ -46,7 +46,7 @@ public class ScheduleController {
     @GetMapping("/day")
     public List<LessonDTO> getScheduleForTheDay(@RequestBody @Valid ScheduleRequest request) {
         Optional<Group> optionalGroup = groupService.findByFacultyAndNum(
-                request.getGroupDTO().getEFaculty(),request.getGroupDTO().getNumOfGroup());
+                request.getGroupDTO().getFaculty(),request.getGroupDTO().getNumOfGroup());
         List<LessonDTO> schedule = null;
         if(optionalGroup.isPresent()){
             schedule = lessonService.findForDay(

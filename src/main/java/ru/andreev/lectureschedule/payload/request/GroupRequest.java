@@ -1,30 +1,33 @@
 package ru.andreev.lectureschedule.payload.request;
 
+import ru.andreev.lectureschedule.enums.Course;
+import ru.andreev.lectureschedule.enums.EFaculty;
+
 import javax.validation.constraints.NotBlank;
 
 public class GroupRequest {
     @NotBlank
-    String faculty;  // todo test with enums, maybe it works
+    EFaculty faculty;
 
     @NotBlank
-    String course; // todo same
+    Course course;
 
     @NotBlank
     String name;
 
-    public String getFaculty() {
+    public EFaculty getFaculty() {
         return faculty;
     }
 
-    public void setFaculty(String faculty) {
+    public void setFaculty(EFaculty faculty) {
         this.faculty = faculty;
     }
 
-    public String getCourse() {
+    public Course getCourse() {
         return course;
     }
 
-    public void setCourse(String course) {
+    public void setCourse(Course course) {
         this.course = course;
     }
 

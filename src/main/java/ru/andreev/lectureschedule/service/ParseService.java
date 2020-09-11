@@ -42,7 +42,7 @@ public class ParseService {
         return faculty;
     }
 
-    public List<Lesson> readSchedule(String codeFaculty, String codeGroup, Group group){
+    public List<Lesson> readSchedule(String codeFaculty, String codeGroup){
         Document document = getDocument(codeFaculty, codeGroup);
         Elements elements = document.getElementsByClass("pair");
         List<Lesson> lessons  = new ArrayList<>();
@@ -76,7 +76,6 @@ public class ParseService {
                 i = index + 1;
             }
             lesson.setNumOfWeek(numOfWeek);
-            lesson.setGroup(group);
             lessons.add(lesson);
         }
 

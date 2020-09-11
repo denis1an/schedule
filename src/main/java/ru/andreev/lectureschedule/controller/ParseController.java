@@ -8,8 +8,6 @@ import ru.andreev.lectureschedule.DTO.GroupDTO;
 import ru.andreev.lectureschedule.entity.Faculty;
 import ru.andreev.lectureschedule.entity.Group;
 import ru.andreev.lectureschedule.entity.Lesson;
-import ru.andreev.lectureschedule.enums.Course;
-import ru.andreev.lectureschedule.enums.EFaculty;
 import ru.andreev.lectureschedule.mapper.GroupMapper;
 import ru.andreev.lectureschedule.payload.request.GroupRequest;
 import ru.andreev.lectureschedule.service.FacultyService;
@@ -44,8 +42,8 @@ public class ParseController {
     @GetMapping("/group")
     public GroupDTO parseGroup(@RequestBody @Valid GroupRequest request){
         Optional<Faculty> optionalFaculty = facultyService.
-                findByEFaculty(EFaculty.valueOf(request.getFaculty()));
-        Group group = null;
+                findByEFaculty(request.getFaculty());
+        Group group;
         if(optionalFaculty.isPresent()){
             Faculty faculty = optionalFaculty.get();
 
@@ -54,14 +52,15 @@ public class ParseController {
 
             group = new Group();
             group.setName(request.getName());
-            group.setCourse(Course.valueOf(request.getCourse()));
-            group.setEFaculty(EFaculty.valueOf(request.getFaculty()));
+            group.setCourse(request.getCourse());
+            group.setEFaculty(request.getFaculty());
 
-            List<Lesson> lessons = parseService.readSchedule(codeFaculty,codeGroup,group);
-            group.setLessons(lessons);
-
-            group = groupService.save(group);
+            List<Lesson> lessons = parseService.readSchedule(codeFaculty,codeGroup);
+            lessons.forEach(lesson -> lesson.setGroup(group));
             lessonService.saveAll(lessons);
+
+            group.setLessons(lessons);
+            groupService.save(group);
         }else {
             return new GroupDTO();
         }

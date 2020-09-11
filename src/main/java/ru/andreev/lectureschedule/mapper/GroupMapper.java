@@ -11,7 +11,7 @@ public class GroupMapper {
     public static GroupDTO toDto(Group group){
         GroupDTO groupDTO = new GroupDTO();
         groupDTO.setNumOfGroup(group.getName());
-        groupDTO.setEFaculty(group.getEFaculty());
+        groupDTO.setFaculty(group.getEFaculty());
         groupDTO.setCourse(group.getCourse());
 
         if(group.getLessons() != null){

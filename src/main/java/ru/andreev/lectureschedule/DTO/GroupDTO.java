@@ -11,7 +11,7 @@ public class GroupDTO {
     private String numOfGroup;
 
     @NotBlank
-    private EFaculty EFaculty;
+    private EFaculty faculty;
 
     @NotBlank
     private Course course;
@@ -26,12 +26,12 @@ public class GroupDTO {
         this.numOfGroup = numOfGroup;
     }
 
-    public EFaculty getEFaculty() {
-        return EFaculty;
+    public EFaculty getFaculty() {
+        return faculty;
     }
 
-    public void setEFaculty(EFaculty EFaculty) {
-        this.EFaculty = EFaculty;
+    public void setFaculty(EFaculty faculty) {
+        this.faculty = faculty;
     }
 
     public Course getCourse() {
