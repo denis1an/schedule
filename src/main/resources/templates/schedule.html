@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <title>Schedule</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <form action="#" th:action="@{/}" th:object="${groupRequest}" method="post">
+        <p>Faculty:</p>
+        <div>
+            <label>
+                ISIT
+                <input type="radio" value="ISIT" th:field="*{groupDTO.faculty}" >
+            </label>
+        </div>
+        <div>
+            <label>
+                IKSS
+                <input type="radio" value="IKSS" th:field="*{groupDTO.faculty}" >
+            </label>
+        </div>
+        <p>Course:</p>
+        <div>
+            <div>
+                <label>
+                    FIRST
+                    <input type="radio" value="FIRST" th:value="*{groupDTO.course}" >
+                </label>
+            </div>
+            <div>
+                <label>
+                    SECOND
+                    <input type="radio" value="SECOND" th:value="*{groupDTO.course}" >
+                </label>
+            </div>
+            <div>
+                <label>
+                    THIRD
+                    <input type="radio" value="THIRD" th:value="*{groupDTO.course}" >
+                </label>
+            </div>
+            <div>
+                <label>
+                    FOURTH
+                    <input type="radio" value="FOURTH" th:value="*{groupDTO.course}" >
+                </label>
+            </div>
+        </div>
+        <p>GROUP:</p>
+        <div>
+            <label>
+                <input type="text" th:field="*{groupDTO.numOfGroup}">
+            </label>
+        </div>
+        <p>SCHEDULE FOR THE DAY:</p>
+        <div>
+            <label>
+                <input type="date" th:field="*{date}">
+            </label>
+            </div>
+        <div>
+            <input type="reset" value="Reset">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+</html>

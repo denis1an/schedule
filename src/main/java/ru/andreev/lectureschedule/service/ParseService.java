@@ -7,7 +7,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 import ru.andreev.lectureschedule.entity.Faculty;
-import ru.andreev.lectureschedule.entity.Group;
 import ru.andreev.lectureschedule.entity.Lesson;
 import ru.andreev.lectureschedule.enums.EFaculty;
 import ru.andreev.lectureschedule.enums.TypeOfLesson;
@@ -51,7 +50,7 @@ public class ParseService {
             lesson.setName(element.getElementsByTag("strong").text());
             lesson.setTeacher(element.getElementsByClass("teacher").text());
             lesson.setAudience(element.getElementsByClass("aud").text());
-            lesson.setNumOfLesson(Integer.parseInt(element.attr("pair")));
+            lesson.setNumOfLesson(Integer.parseInt(element.attr("pair")) - 1);
 
             int dayOfWeek = Integer.parseInt(element.attr("weekday"));
             lesson.setDayOfWeek(DayOfWeek.of(dayOfWeek));

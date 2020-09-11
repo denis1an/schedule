@@ -79,7 +79,7 @@ public class ParseRestController {
         return "test";
     }*/
 
-    @GetMapping
+   /* @GetMapping
     public String test(){
 
         Faculty faculty1 = parseService.readGroupsOfFaculty("ИСИТ,50005;54426,ИСТ-011;54427,ИСТ-012;54428,ИСТ-013;54671,ИСТ-014;" +
@@ -100,6 +100,6 @@ public class ParseRestController {
         facultyService.save(faculty2);
 
         return "test";
-    }
+    }*/
 
 }

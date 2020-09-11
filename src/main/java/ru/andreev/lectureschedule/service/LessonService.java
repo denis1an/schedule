@@ -7,6 +7,8 @@ import ru.andreev.lectureschedule.mapper.LessonMapper;
 import ru.andreev.lectureschedule.repository.LessonRepository;
 
 import java.time.DayOfWeek;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,11 +46,24 @@ public class LessonService {
         lessonRepository.delete(lesson);
     }
 
-    public List<LessonDTO> findForWeek(Integer numOfWeek, Long groupId){
-        return LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndGroupId(numOfWeek,groupId));
+    public List<LessonDTO> findForWeek(Date date, Long groupId){
+        return LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndGroupId(getNumOfWeek(date),groupId));
     }
 
-    public List<LessonDTO> findForDay(Integer numOfWeek, DayOfWeek dayOfWeek, Long groupId){
-        return LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndDayOfWeekAndGroupId(numOfWeek,dayOfWeek,groupId));
+    public List<LessonDTO> findForDay(Date date, Long groupId){
+
+        return LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndDayOfWeekAndGroupId(getNumOfWeek(date),getDayOfWeek(date),groupId));
+    }
+
+    private DayOfWeek getDayOfWeek(Date date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return DayOfWeek.of(calendar.get(Calendar.DAY_OF_WEEK) - 1);
+    }
+
+    private int getNumOfWeek(Date date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(Calendar.WEEK_OF_YEAR) - 35;
     }
 }

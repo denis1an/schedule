@@ -29,7 +29,7 @@ public class GroupService {
         return GroupMapper.toDto(groupRepository.findAll());
     }
 
-    public Optional<Group> findByFacultyAndNum(EFaculty EFaculty, String name){
+    public Optional<Group> findByFacultyAndName(EFaculty EFaculty, String name){
         return groupRepository.findByEFacultyAndName(EFaculty,name);
     }
     public List<GroupDTO> findAllByCourseAndFaculty(Course course, EFaculty EFaculty){

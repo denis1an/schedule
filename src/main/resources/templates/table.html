@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div th:fragment="table">
+    <table>
+        <thead>
+        <tr>
+            <th>Number of lesson</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Teacher</th>
+            <th>Day of Week</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="lesson: ${lessons}">
+            <th th:text="${lesson.getNumOfLesson()}"></th>
+            <th th:text="${lesson.getName()}"></th>
+            <th th:text="${lesson.getType()}"></th>
+            <th th:text="${lesson.teacher}"></th>
+            <th th:text="${lesson.dayOfWeek}"></th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
