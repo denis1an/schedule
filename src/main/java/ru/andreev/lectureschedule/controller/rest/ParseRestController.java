@@ -1,4 +1,4 @@
-package ru.andreev.lectureschedule.controller;
+package ru.andreev.lectureschedule.controller.rest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +22,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(produces = "application/json", path = "/api/v.0/schedule/upload/")
-public class ParseController {
+public class ParseRestController {
 
     private final ParseService parseService;
 
@@ -32,7 +32,7 @@ public class ParseController {
 
     private final GroupService groupService;
 
-    public ParseController(ParseService parseService, LessonService lessonService, FacultyService facultyService, GroupService groupService) {
+    public ParseRestController(ParseService parseService, LessonService lessonService, FacultyService facultyService, GroupService groupService) {
         this.parseService = parseService;
         this.lessonService = lessonService;
         this.facultyService = facultyService;
