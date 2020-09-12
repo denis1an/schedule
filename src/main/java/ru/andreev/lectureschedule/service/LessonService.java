@@ -51,14 +51,18 @@ public class LessonService {
     }
 
     public List<LessonDTO> findForDay(Date date, Long groupId){
-
         return LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndDayOfWeekAndGroupId(getNumOfWeek(date),getDayOfWeek(date),groupId));
     }
 
     private DayOfWeek getDayOfWeek(Date date){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        return DayOfWeek.of(calendar.get(Calendar.DAY_OF_WEEK) - 1);
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+        if(dayOfWeek == 0){
+             return DayOfWeek.SUNDAY;
+        }else {
+            return DayOfWeek.of(dayOfWeek);
+        }
     }
 
     private int getNumOfWeek(Date date){
