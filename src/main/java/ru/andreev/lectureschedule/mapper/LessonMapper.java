@@ -9,7 +9,6 @@ import java.util.List;
 public class LessonMapper {
     public static LessonDTO toDto(Lesson lesson){
         LessonDTO lessonDTO = new LessonDTO();
-        lessonDTO.setId(lesson.getId());
         lessonDTO.setName(lesson.getName());
         lessonDTO.setTeacher(lesson.getTeacher());
         lessonDTO.setType(lesson.getType());

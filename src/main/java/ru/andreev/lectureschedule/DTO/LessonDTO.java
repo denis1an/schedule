@@ -6,20 +6,11 @@ import java.time.DayOfWeek;
 
 public class LessonDTO {
 
-    private Long id;
     private String name;
     private String teacher;
     private TypeOfLesson type;
     private DayOfWeek dayOfWeek;
     private int numOfLesson;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
