@@ -13,6 +13,7 @@ public class LessonMapper {
         lessonDTO.setTeacher(lesson.getTeacher());
         lessonDTO.setType(lesson.getType());
         lessonDTO.setDayOfWeek(lesson.getDayOfWeek());
+        lessonDTO.setAudience(lesson.getAudience());
         lessonDTO.setNumOfLesson(lesson.getNumOfLesson());
         return lessonDTO;
     }

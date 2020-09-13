@@ -3,6 +3,7 @@ package ru.andreev.lectureschedule.DTO;
 import ru.andreev.lectureschedule.enums.TypeOfLesson;
 
 import java.time.DayOfWeek;
+import java.util.List;
 
 public class LessonDTO {
 
@@ -42,6 +43,14 @@ public class LessonDTO {
 
     public void setDayOfWeek(DayOfWeek dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
+    }
+
+    public String getAudience() {
+        return audience;
+    }
+
+    public void setAudience(String audience) {
+        this.audience = audience;
     }
 
     public int getNumOfLesson() {

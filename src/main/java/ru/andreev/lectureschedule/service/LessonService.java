@@ -47,6 +47,11 @@ public class LessonService {
         lessonRepository.delete(lesson);
     }
 
+    public List<LessonDTO> findByLesson(String name, String teacher, String audience, Long groupId){
+        return LessonMapper.toDto(
+                lessonRepository.findAllByNameContainingAndTeacherContainingAndAudienceContainingAndGroupId(name, teacher,audience,groupId));
+    }
+
     public List<LessonDTO> findForWeek(Date date, Long groupId){
         List<LessonDTO> lessons = LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndGroupId(getNumOfWeek(date),groupId));
         lessons.sort(new LessonDtoDayPairComparator());

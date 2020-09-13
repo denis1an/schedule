@@ -41,6 +41,18 @@ public class ScheduleRestController {
         return schedule;
     }
 
+    @GetMapping("/lesson")
+    public List<LessonDTO> getScheduleByLesson(@RequestBody @Valid ScheduleRequest request){
+        Optional<Group> optionalGroup = groupService.findByFacultyAndName(
+                request.getGroupDTO().getFaculty(), request.getGroupDTO().getNumOfGroup());
+        List<LessonDTO> schedule = null;
+        if(optionalGroup.isPresent()){
+            LessonDTO lesson = request.getLesson();
+            schedule = lessonService.findByLesson(lesson.getName(),lesson.getTeacher(), lesson.getAudience(), optionalGroup.get().getId());
+        }
+        return schedule;
+    }
+
     @GetMapping("/day")
     public List<LessonDTO> getScheduleForTheDay(@RequestBody @Valid ScheduleRequest request) {
         Optional<Group> optionalGroup = groupService.findByFacultyAndName(
