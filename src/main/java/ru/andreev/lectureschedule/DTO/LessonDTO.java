@@ -11,7 +11,17 @@ public class LessonDTO {
     private String teacher;
     private TypeOfLesson type;
     private DayOfWeek dayOfWeek;
+    private String audience;
     private int numOfLesson;
+    private List<String> dates;
+
+    public List<String> getDates() {
+        return dates;
+    }
+
+    public void setDates(List<String> dates) {
+        this.dates = dates;
+    }
 
     public String getName() {
         return name;
