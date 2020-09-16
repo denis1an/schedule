@@ -4,7 +4,6 @@ import ru.andreev.lectureschedule.DTO.LessonDTO;
 import ru.andreev.lectureschedule.entity.Lesson;
 
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -14,7 +13,7 @@ public class LessonMapper {
         LessonDTO lessonDTO = new LessonDTO();
         lessonDTO.setName(lesson.getName());
         lessonDTO.setTeacher(lesson.getTeacher());
-        lessonDTO.setType(lesson.getType());
+        lessonDTO.setType(String.valueOf(lesson.getType()));
         lessonDTO.setDayOfWeek(lesson.getDayOfWeek());
         lessonDTO.setAudience(lesson.getAudience());
         lessonDTO.setNumOfLesson(lesson.getNumOfLesson());

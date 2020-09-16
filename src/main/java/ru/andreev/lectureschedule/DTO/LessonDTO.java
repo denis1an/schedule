@@ -9,7 +9,7 @@ public class LessonDTO {
 
     private String name;
     private String teacher;
-    private TypeOfLesson type;
+    private String type;
     private DayOfWeek dayOfWeek;
     private String audience;
     private int numOfLesson;
@@ -39,11 +39,11 @@ public class LessonDTO {
         this.teacher = teacher;
     }
 
-    public TypeOfLesson getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(TypeOfLesson type) {
+    public void setType(String type) {
         this.type = type;
     }
 

@@ -11,9 +11,11 @@ import ru.andreev.lectureschedule.service.GroupService;
 import ru.andreev.lectureschedule.service.LessonService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(produces = "application/json", path = "/api/v.0/schedule")
@@ -48,7 +50,18 @@ public class ScheduleRestController {
         List<LessonDTO> schedule = null;
         if(optionalGroup.isPresent()){
             LessonDTO lesson = request.getLesson();
-            schedule = lessonService.findByLesson(lesson.getName(),lesson.getTeacher(), lesson.getAudience(), optionalGroup.get().getId());
+            List<LessonDTO> lessons = lessonService.findByLesson(lesson.getName(),lesson.getTeacher(), lesson.getAudience(), optionalGroup.get().getId());
+
+            if(request.getLesson().getType() != null || request.getLesson().getType().equals("")){
+                schedule = new ArrayList<>();
+                for (LessonDTO lessonDTO : lessons){
+                    if(lessonDTO.getType().equals(request.getLesson().getType())){
+                        schedule.add(lessonDTO);
+                    }
+                }
+            }else{
+                schedule = lessons;
+            }
         }
         return schedule;
     }
