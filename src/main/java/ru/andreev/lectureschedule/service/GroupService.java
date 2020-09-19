@@ -20,11 +20,6 @@ public class GroupService {
         this.groupRepository = groupRepository;
     }
 
-    public Optional<GroupDTO> findById(Long id){
-        Optional<Group> optionalGroup = groupRepository.findById(id);
-        return optionalGroup.map(GroupMapper::toDto);
-    }
-
     public List<GroupDTO> findAll(){
         return GroupMapper.toDto(groupRepository.findAll());
     }

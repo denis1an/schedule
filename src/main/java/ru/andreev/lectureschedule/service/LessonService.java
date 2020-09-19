@@ -22,19 +22,6 @@ public class LessonService {
         this.lessonRepository = lessonRepository;
     }
 
-    public Optional<LessonDTO> findById(Long id){
-        Optional<Lesson> optionalLesson = lessonRepository.findById(id);
-        return optionalLesson.map(LessonMapper::toDto);
-    }
-
-    public List<LessonDTO> findAll(){
-        return LessonMapper.toDto(lessonRepository.findAll());
-    }
-
-    public void save(Lesson lesson){
-        lessonRepository.save(lesson);
-    }
-
     public void saveAll(List<Lesson> lessons){
         lessonRepository.saveAll(lessons);
     }
