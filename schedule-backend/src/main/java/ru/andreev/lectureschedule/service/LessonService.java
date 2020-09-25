@@ -2,7 +2,7 @@ package ru.andreev.lectureschedule.service;
 
 import org.springframework.stereotype.Service;
 import ru.andreev.lectureschedule.DTO.LessonDTO;
-import ru.andreev.lectureschedule.comporator.LessonDtoDayPairComparator;
+import ru.andreev.lectureschedule.comporator.LessonDayPairComparator;
 import ru.andreev.lectureschedule.entity.Lesson;
 import ru.andreev.lectureschedule.mapper.LessonMapper;
 import ru.andreev.lectureschedule.repository.LessonRepository;
@@ -11,7 +11,6 @@ import java.time.DayOfWeek;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class LessonService {
@@ -40,9 +39,9 @@ public class LessonService {
     }
 
     public List<LessonDTO> findForWeek(Date date, Long groupId){
-        List<LessonDTO> lessons = LessonMapper.toDto(lessonRepository.findAllByNumOfWeekContainsAndGroupId(getNumOfWeek(date),groupId));
-        lessons.sort(new LessonDtoDayPairComparator());
-        return lessons;
+        List<Lesson> lessons = lessonRepository.findAllByNumOfWeekContainsAndGroupId(getNumOfWeek(date),groupId);
+        lessons.sort(new LessonDayPairComparator());
+        return LessonMapper.toDto(lessons);
     }
 
     public List<LessonDTO> findForDay(Date date, Long groupId){

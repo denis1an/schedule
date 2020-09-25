@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C223EA62251C8BD400F51289 /* LessonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C223EA61251C8BD400F51289 /* LessonRow.swift */; };
 		C2973F4C2517BA1000ADBA7C /* schedule_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973F4B2517BA1000ADBA7C /* schedule_appApp.swift */; };
 		C2973F4E2517BA1000ADBA7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973F4D2517BA1000ADBA7C /* ContentView.swift */; };
 		C2973F502517BA1100ADBA7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2973F4F2517BA1100ADBA7C /* Assets.xcassets */; };
 		C2973F532517BA1200ADBA7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2973F522517BA1200ADBA7C /* Preview Assets.xcassets */; };
 		C2973F5E2517BA1200ADBA7C /* schedule_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973F5D2517BA1200ADBA7C /* schedule_appTests.swift */; };
 		C2973F692517BA1200ADBA7C /* schedule_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2973F682517BA1200ADBA7C /* schedule_appUITests.swift */; };
+		C2BDC9EB251C89D7005BEE41 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDC9EA251C89D7005BEE41 /* Lesson.swift */; };
+		C2BDC9F0251C8A18005BEE41 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BDC9EF251C8A18005BEE41 /* Data.swift */; };
+		C2BDC9FD251C8B36005BEE41 /* lessonData.json in Resources */ = {isa = PBXBuildFile; fileRef = C2BDC9FC251C8B36005BEE41 /* lessonData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C223EA61251C8BD400F51289 /* LessonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonRow.swift; sourceTree = "<group>"; };
 		C2973F482517BA1000ADBA7C /* schedule-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "schedule-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2973F4B2517BA1000ADBA7C /* schedule_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = schedule_appApp.swift; sourceTree = "<group>"; };
 		C2973F4D2517BA1000ADBA7C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +50,9 @@
 		C2973F642517BA1200ADBA7C /* schedule-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "schedule-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2973F682517BA1200ADBA7C /* schedule_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = schedule_appUITests.swift; sourceTree = "<group>"; };
 		C2973F6A2517BA1200ADBA7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2BDC9EA251C89D7005BEE41 /* Lesson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		C2BDC9EF251C8A18005BEE41 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		C2BDC9FC251C8B36005BEE41 /* lessonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lessonData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,11 +103,15 @@
 		C2973F4A2517BA1000ADBA7C /* schedule-app */ = {
 			isa = PBXGroup;
 			children = (
+				C2BDC9FC251C8B36005BEE41 /* lessonData.json */,
 				C2973F4B2517BA1000ADBA7C /* schedule_appApp.swift */,
 				C2973F4D2517BA1000ADBA7C /* ContentView.swift */,
 				C2973F4F2517BA1100ADBA7C /* Assets.xcassets */,
 				C2973F542517BA1200ADBA7C /* Info.plist */,
 				C2973F512517BA1200ADBA7C /* Preview Content */,
+				C2BDC9EA251C89D7005BEE41 /* Lesson.swift */,
+				C2BDC9EF251C8A18005BEE41 /* Data.swift */,
+				C223EA61251C8BD400F51289 /* LessonRow.swift */,
 			);
 			path = "schedule-app";
 			sourceTree = "<group>";
@@ -233,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2BDC9FD251C8B36005BEE41 /* lessonData.json in Resources */,
 				C2973F532517BA1200ADBA7C /* Preview Assets.xcassets in Resources */,
 				C2973F502517BA1100ADBA7C /* Assets.xcassets in Resources */,
 			);
@@ -259,8 +272,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2BDC9EB251C89D7005BEE41 /* Lesson.swift in Sources */,
 				C2973F4E2517BA1000ADBA7C /* ContentView.swift in Sources */,
 				C2973F4C2517BA1000ADBA7C /* schedule_appApp.swift in Sources */,
+				C2BDC9F0251C8A18005BEE41 /* Data.swift in Sources */,
+				C223EA62251C8BD400F51289 /* LessonRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

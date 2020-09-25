@@ -1,12 +1,13 @@
 package ru.andreev.lectureschedule.comporator;
 
-import ru.andreev.lectureschedule.DTO.LessonDTO;
+import ru.andreev.lectureschedule.entity.Lesson;
+
 import java.util.Comparator;
 
-public class LessonDtoDayPairComparator implements Comparator<LessonDTO> {
+public class LessonDayPairComparator implements Comparator<Lesson> {
 
     @Override
-    public int compare(LessonDTO o1, LessonDTO o2) {
+    public int compare(Lesson o1, Lesson o2) {
         if(o1.getDayOfWeek().getValue() > o2.getDayOfWeek().getValue()){
             return 1;
         }

@@ -10,7 +10,7 @@ public class LessonDTO {
     private String name;
     private String teacher;
     private String type;
-    private DayOfWeek dayOfWeek;
+    private String dayOfWeek;
     private String audience;
     private int numOfLesson;
     private List<String> dates;
@@ -47,11 +47,11 @@ public class LessonDTO {
         this.type = type;
     }
 
-    public DayOfWeek getDayOfWeek() {
+    public String getDayOfWeek() {
         return dayOfWeek;
     }
 
-    public void setDayOfWeek(DayOfWeek dayOfWeek) {
+    public void setDayOfWeek(String dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }
 
