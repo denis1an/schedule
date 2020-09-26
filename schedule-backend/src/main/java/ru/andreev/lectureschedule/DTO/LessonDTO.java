@@ -1,8 +1,5 @@
 package ru.andreev.lectureschedule.DTO;
 
-import ru.andreev.lectureschedule.enums.TypeOfLesson;
-
-import java.time.DayOfWeek;
 import java.util.List;
 
 public class LessonDTO {
@@ -13,6 +10,9 @@ public class LessonDTO {
     private String dayOfWeek;
     private String audience;
     private int numOfLesson;
+    private String startOfLesson;
+    private String endOfLesson;
+
     private List<String> dates;
 
     public List<String> getDates() {
@@ -61,6 +61,22 @@ public class LessonDTO {
 
     public void setAudience(String audience) {
         this.audience = audience;
+    }
+
+    public String getStartOfLesson() {
+        return startOfLesson;
+    }
+
+    public void setStartOfLesson(String startOfLesson) {
+        this.startOfLesson = startOfLesson;
+    }
+
+    public String getEndOfLesson() {
+        return endOfLesson;
+    }
+
+    public void setEndOfLesson(String endOfLesson) {
+        this.endOfLesson = endOfLesson;
     }
 
     public int getNumOfLesson() {
