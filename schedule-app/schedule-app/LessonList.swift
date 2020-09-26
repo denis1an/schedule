@@ -17,7 +17,7 @@ struct LessonList: View {
 
 struct LessonList_Previews: PreviewProvider {
     static var previews: some View {
-        ForEach(["iPhone SE", "iPhone 8", "iPhone 11"], id: \.self) { deviceName in
+        ForEach(["iPhone SE", "iPhone 8"], id: \.self) { deviceName in
                    LessonList()
                         .previewDevice(PreviewDevice(rawValue: deviceName))
                 }

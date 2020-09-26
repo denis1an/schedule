@@ -30,7 +30,7 @@ struct LessonRow: View {
                     VStack(alignment: .leading){
                         Text(lesson.teacher)
                         Text(lesson.type)
-                        Text(lesson.audience).foregroundColor(/*@START_MENU_TOKEN@*/.gray/*@END_MENU_TOKEN@*/)
+                        Text(lesson.audience).foregroundColor(Color.blue)
                     }.font(.subheadline)
                 }
             }
