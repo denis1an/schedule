@@ -2,6 +2,7 @@ package ru.andreev.lectureschedule.mapper;
 
 import ru.andreev.lectureschedule.DTO.LessonDTO;
 import ru.andreev.lectureschedule.entity.Lesson;
+import ru.andreev.lectureschedule.enums.TypeOfLesson;
 
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -14,7 +15,7 @@ public class LessonMapper {
         LessonDTO lessonDTO = new LessonDTO();
         lessonDTO.setName(lesson.getName());
         lessonDTO.setTeacher(lesson.getTeacher());
-        lessonDTO.setType(String.valueOf(lesson.getType()));
+        lessonDTO.setType(setTypeOfLesson(lesson.getType()));
 
         lessonDTO.setDayOfWeek(setDayOfWeek(lesson.getDayOfWeek()));
 
@@ -34,6 +35,24 @@ public class LessonMapper {
         return lessonDTO;
     }
 
+
+    private static String setTypeOfLesson(TypeOfLesson type){
+        String typeOfLesson;
+        switch (type){
+            case LECTURE:
+                typeOfLesson = "Лекция";
+                break;
+            case LABORATORY_WORK:
+                typeOfLesson = "Лабораторная работа";
+                break;
+            case PRACTICAL_LESSON:
+                typeOfLesson = "Практическая работа";
+                break;
+            default:
+                typeOfLesson = "";
+        }
+        return typeOfLesson;
+    }
 
     private static String setDayOfWeek(DayOfWeek day){
         String dayOfWeek;
