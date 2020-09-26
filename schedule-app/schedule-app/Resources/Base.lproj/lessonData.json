@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Turtle Rock",
+        "city": "Twentynine Palms",
+        "id": "1001",
+        "park": "Joshua Tree National Park"
+    },
+    {
+        "name": "Silver Salmon Creek",
+        "city": "Port Alsworth",
+        "id": "1002",
+        "park": "Lake Clark National Park and Preserve"
+      }
+]
