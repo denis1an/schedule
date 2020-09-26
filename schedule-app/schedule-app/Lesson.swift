@@ -13,7 +13,9 @@ struct Lesson: Hashable,Codable {
     var type: String
     var dayOfWeek: String
     var audience: String
-    var numOfLesson: String
+    var numOfLesson: Int
     var dates: [String]
+    var startOfLesson: String
+    var endOfLesson: String
 }
 
